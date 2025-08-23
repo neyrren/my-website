@@ -1,0 +1,225 @@
+/* ---------- Base & helpers ---------- */
+html { scroll-behavior: smooth; }
+
+.nav-link {
+  color: rgba(255,255,255,0.8);
+  transition: color .25s, transform .25s;
+}
+.nav-link:hover { color: #f472b6; transform: translateY(-2px); }
+
+.mobile-link {
+  display: block; padding: .5rem 0; color: rgba(255,255,255,.9);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+/* Card container (no Tailwind @apply here) */
+/* Card container (no Tailwind @apply here) */
+.card {    
+  margin: 3.5rem auto;
+  padding: 2rem 1.5rem;
+  width: min(1100px, 92%);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 1.25rem;
+  box-shadow: 0 25px 60px rgba(139,92,246,.2);
+  position: relative;
+  position: center;
+}
+
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  gap: .5rem; padding: .75rem 1.25rem; border-radius: 9999px;
+  font-weight: 600; transition: transform .2s, background .2s, border-color .2s, color .2s;
+  border: 1px solid rgba(255,255,255,.12);
+}
+.btn:hover { transform: translateY(-2px) scale(1.02); }
+
+.btn-primary {
+  background: linear-gradient(90deg,#ec4899,#8b5cf6,#3b82f6);
+  color: white;
+}
+.btn-primary:hover { filter: brightness(1.08); }
+
+.btn-ghost {
+  background: transparent; color: rgba(255,255,255,.9);
+}
+.btn-ghost:hover { background: rgba(255,255,255,.06); color: #fff; }
+
+/* Shimmer on primary buttons */
+.btn-shimmer { position: relative; overflow: hidden; }
+.btn-shimmer::after {
+  content: ""; position: absolute; inset: 0; left: -120%;
+  background: linear-gradient(110deg, transparent 40%, rgba(255,255,255,.45) 55%, transparent 70%);
+  animation: shimmer 2.2s linear infinite;
+}
+@keyframes shimmer { to { left: 120%; } }
+
+/* ---------- Animations ---------- */
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%     { transform: translateY(-10px); }
+}
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fadeInUp { animation: fadeInUp 1s ease forwards; }
+
+/* ---------- Skills slider ---------- */
+.skills-slider { position: relative; }
+.skills-track {
+  display: flex; gap: 16px; padding-block: 10px;
+  will-change: transform;
+  animation: slideTrack 28s linear infinite;
+}
+.skill-box {
+  min-width: 150px; max-width: 180px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 16px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: transform .25s, background .25s, box-shadow .25s, border-color .25s;
+}
+.skill-box img { width: 56px; height: 56px; margin: 0 auto 10px; }
+.skill-box p { font-weight: 600; color: rgba(255,255,255,.92); }
+.skill-box:hover {
+  transform: translateY(-6px) scale(1.03);
+  background: rgba(236,72,153,.18);
+  border-color: rgba(236,72,153,.45);
+  box-shadow: 0 12px 40px rgba(236,72,153,.25);
+}
+.skills-track:hover { animation-play-state: paused; }
+
+@keyframes slideTrack {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+/*services section */
+
+
+/* ---------- Projects section ---------- */
+.projects-section {
+  padding: 6rem 2rem;        /* same size as other sections */
+  background: linear-gradient(135deg, #1f0a26, #2d0234); /* dark purple-pink gradient */
+  border-radius: 1rem;}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, #ff6ec4, #7873f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Project Grid and Cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4), 0 10px 25px rgba(128, 0, 128, 0.3);
+}
+
+.project-name {
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(to right, #ff85d2, #a259ff);
+  background-clip:text ;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-desc {
+pointer-events: none;
+}
+
+
+/* ---------- About chips ---------- */
+.about-chip{
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 9999px;
+  padding: .6rem 1rem;
+}
+
+/* ---------- Line-only form ---------- */
+.line-field { position: relative; }
+.line-field input,
+.line-field textarea {
+  width: 100%; background: transparent; border: none;
+  border-bottom: 2px solid rgba(255,255,255,.2);
+  padding: .75rem .25rem; color: #fff; outline: none;
+  transition: border-color .25s, box-shadow .25s;
+}
+.line-field input::placeholder,
+.line-field textarea::placeholder { color: rgba(255,255,255,.6); }
+.line-field input:focus,
+.line-field textarea:focus {
+  border-bottom-color: #ec4899;
+  box-shadow: 0 8px 24px rgba(236,72,153,.15);
+}
+
+
+
+:root {
+  
+  --text-color: #ffffff;
+  --card-bg: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="light"] {
+  --bg-color: #f5f5f5;
+  --text-color: #111111;
+  --card-bg: rgba(255, 255, 255, 0.8);
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+  overflow-x: hidden;
+}
+
+.card {
+  background-color: var(--card-bg);
+}
+/* Sparkle animation */
+@keyframes sparkle {
+  0%, 100% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  25% { transform: translateY(-5px) rotate(-5deg); opacity: 0.9; }
+  50% { transform: translateY(-10px) rotate(5deg); opacity: 1; }
+  75% { transform: translateY(-5px) rotate(-2deg); opacity: 0.95; }
+}
+
+.animate-sparkle {
+  animation: sparkle 1s ease-in-out infinite;
+}
+
+#stars {
+  position: fixed;   /* stays fixed in viewport */
+  top: 0;
+  left: 0;
+  width: 100vw;      /* full width */
+  height: 100vh;     /* full height */
+  z-index: -1;       /* behind all content */
+  background: black; /* or blackish purple: #0b0b2f */
+}

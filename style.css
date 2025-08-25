@@ -218,8 +218,8 @@ body {
   position: fixed;   /* stays fixed in viewport */
   top: 0;
   left: 0;
-  width: 100vw;      /* full width */
-  height: 100vh;     /* full height */
+  width: 100%;      /* full width */
+  height: 100%;     /* full height */
   z-index: -1;       /* behind all content */
   background: black; /* or blackish purple: #0b0b2f */
 }

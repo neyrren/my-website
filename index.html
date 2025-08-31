@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Britney's Website</title>
+  <title>Welcome | Britney's Website</title>
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -16,6 +16,8 @@
     }
     .star {
       position: absolute;
+      width: 4px;
+      height: 4px;
       background: white;
       border-radius: 50%;
       animation-name: fall;
@@ -30,38 +32,35 @@
       100% { transform: translateY(0); }
     }
     .float {
-      animation: float 4s ease-in-out infinite;
+      animation: float 3s ease-in-out infinite;
     }
   </style>
 </head>
 <body class="min-h-screen flex items-center justify-center overflow-hidden relative bg-black">
-
-  <!-- Background overlay -->
+  <!-- Dark textured overlay -->
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_#000000,_#1a001a,_#2b0035)]"></div>
   <div id="stars" class="absolute inset-0"></div>
+  <!-- Your card here -->
+</body>
 
-  <!-- Glassmorphic Card -->
-  <div class="relative z-10 bg-white/5 backdrop-blur-lg border border-pink-500/40 shadow-[0_0_40px_rgba(236,72,153,0.6)] 
-              rounded-3xl p-6 sm:p-10 w-11/12 max-w-md sm:max-w-lg text-center">
+  <!-- Large glassmorphic card -->
+  <<div class="relative z-10 bg-white/5 backdrop-blur-lg border border-pink-500/40 shadow-[0_0_60px_rgba(236,72,153,0.7)] rounded-3xl p-16 w-[600px] text-center">
 
-    <!-- Profile picture -->
-    <img src="britney.jpg" 
-         alt="Profile" 
-         class="w-28 h-28 sm:w-36 sm:h-36 mx-auto rounded-full border-4 border-pink-500 shadow-[0_0_30px_rgba(147,51,234,0.8)] float">
+    
+    <!-- Profile picture / animated cartoon -->
+   <img src="britney.jpg" 
+     alt="Profile" 
+     class="w-36 h-36 mx-auto rounded-full border-4 border-pink-500 shadow-[0_0_30px_rgba(147,51,234,0.8)] float">
 
-    <!-- Heading -->
-    <h1 class="text-2xl sm:text-4xl font-bold mt-6 bg-gradient-to-r from-pink-500 to-purple-500 
-               bg-clip-text text-transparent animate-pulse">
+
+
+    <h1 class="text-4xl font-bold mt-6 bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent animate-pulse">
       ✨ Welcome to My World ✨
     </h1>
+    <p class="mt-3 text-purple-200 text-lg">Discover something amazing inside...</p>
 
-    <!-- Subtext -->
-    <p class="mt-3 text-purple-200 text-base sm:text-lg">Discover something amazing inside...</p>
-
-    <!-- Explore button -->
     <button onclick="enterWebsite()" 
-            class="mt-6 sm:mt-8 px-6 sm:px-8 py-3 sm:py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 
-                   text-white font-semibold shadow-lg hover:scale-110 hover:rotate-1 transition-all duration-300">
+      class="mt-8 px-8 py-4 rounded-full bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold shadow-lg hover:scale-110 hover:rotate-1 transition-all duration-300">
       Explore My Website
     </button>
   </div>
@@ -72,22 +71,20 @@
     for(let i=0; i<50; i++) {
       const star = document.createElement('div');
       star.className = 'star';
-      star.style.top = Math.random() * -100 + 'vh'; 
+      star.style.top = Math.random() * -100 + 'vh'; // start above view
       star.style.left = Math.random() * 100 + 'vw';
-      const size = (2 + Math.random()*3) + 'px';
-      star.style.width = size;
-      star.style.height = size;
+      star.style.width = star.style.height = (2 + Math.random()*4) + 'px'; // random size
       star.style.animationDuration = (3 + Math.random()*5) + 's';
       star.style.animationDelay = Math.random()*5 + 's';
       starContainer.appendChild(star);
     }
 
-    // Redirect on button click to main page (index.html)
+    // Redirect on button click
     function enterWebsite(){
       document.body.style.transition = "opacity 1s";
       document.body.style.opacity = 0;
       setTimeout(() => {
-        window.location.href = "welcome.html"; // change this if your main page has a different name
+        window.location.href = "welcome.html";
       }, 1000);
     }
   </script>
